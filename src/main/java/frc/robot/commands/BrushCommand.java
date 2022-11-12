@@ -26,15 +26,22 @@ public class BrushCommand extends CommandBase {
     double leftTrigger = RobotContainer.xbox.getRawAxis(Constants.LeftTrigger);
     double triggerValue = (rightTrigger + leftTrigger)/2;
 
-    if(triggerValue == 0){
-       RobotContainer.m_Brush.setspeed(Constants.c_constantIntakeSpeed);
+
+    // currently works as a press-and-hold Y button to stop the brush motor, will fix to be a toggle later
+
+    if (RobotContainer.xbox.getRawButton(Constants.c_stopBrushMotor)) {
+        RobotContainer.m_Brush.setspeed(0);
     }
-    else if(triggerValue > 0 && triggerValue <= Constants.c_constantIntakeSpeed){
+    else if(triggerValue == 0){
       RobotContainer.m_Brush.setspeed(Constants.c_constantIntakeSpeed);
-    }
+   }
+     else if(triggerValue > 0 && triggerValue <= Constants.c_constantIntakeSpeed){
+     RobotContainer.m_Brush.setspeed(Constants.c_constantIntakeSpeed);
+   }
     else{
-      RobotContainer.m_Brush.setspeed(triggerValue);
-    }
+     RobotContainer.m_Brush.setspeed(triggerValue);
+   }
+   
   }
 
   // Called once the command ends or is interrupted.

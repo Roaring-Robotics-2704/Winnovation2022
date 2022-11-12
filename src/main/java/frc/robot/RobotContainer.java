@@ -13,6 +13,7 @@ import frc.robot.commands.DriveRobot;
 import frc.robot.commands.BrushCommand;
 
 
+
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
  * "declarative" paradigm, very little robot logic should actually be handled in the {@link Robot}
@@ -32,9 +33,12 @@ public class RobotContainer {
   //OI
   public static XboxController xbox  = new XboxController(Constants.c_joystick);
   //getPOV can be used to find the ange value of the d-Pad on the xbox controller
+  
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
+     
     // Configure the button bindings
     configureButtonBindings();
     //Is nessary, might have been the reason for the error "DifferntialDrive...Output not updated often enough"
@@ -48,7 +52,9 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
