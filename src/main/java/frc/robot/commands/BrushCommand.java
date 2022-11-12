@@ -22,19 +22,11 @@ public class BrushCommand extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double rightTrigger = RobotContainer.xbox.getRawAxis(Constants.RightTrigger);
-    double leftTrigger = RobotContainer.xbox.getRawAxis(Constants.LeftTrigger);
-    double triggerValue = (rightTrigger + leftTrigger)/2;
-
-    if(triggerValue == 0){
-       RobotContainer.m_Brush.setspeed(Constants.c_constantIntakeSpeed);
-    }
-    else if(triggerValue > 0 && triggerValue <= Constants.c_constantIntakeSpeed){
-      RobotContainer.m_Brush.setspeed(Constants.c_constantIntakeSpeed);
-    }
-    else{
-      RobotContainer.m_Brush.setspeed(triggerValue);
-    }
+    RobotContainer.m_Brush.setspeed(RobotContainer.xbox.getRawAxis(Constants.RightTrigger)-RobotContainer.xbox.getRawAxis(Constants.LeftTrigger));
+    //  boolean button = RobotContainer.xbox.getAButton();
+    //  if(button = true){
+    //    RobotContainer.m_Brush.setspeed(1);
+    //  }
   }
 
   // Called once the command ends or is interrupted.

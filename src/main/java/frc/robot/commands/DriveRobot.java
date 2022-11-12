@@ -3,11 +3,11 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
+import frc.robot.Constants;
+import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
 
 
 public class DriveRobot extends CommandBase {
@@ -27,8 +27,8 @@ public class DriveRobot extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    double joystickLeft = RobotContainer.xbox.getRawAxis(Constants.c_leftJoystickAxis);
-    double joystickRight = RobotContainer.xbox.getRawAxis(Constants.c_rightJoystickAxis);
+    double joystickLeft = RobotContainer.xbox.getRawAxis(1);
+    double joystickRight = RobotContainer.xbox.getRawAxis(5);
 
     double joystickTotal = Math.abs(joystickLeft)+Math.abs(joystickRight);
     SmartDashboard.putNumber("joystickTotal",joystickTotal);
@@ -39,7 +39,7 @@ public class DriveRobot extends CommandBase {
     double timerRemainder = Math.IEEEremainder(timerValue,1);
     SmartDashboard.putNumber("timerRemainder",timerRemainder);
 
-    double danceSpeed = Constants.danceSpeed;
+    double danceSpeed = 0.5;
     if(joystickTotal<0.05){
       if(timerRemainder<0){ //every half a second, switch modes
         joystickLeft = danceSpeed;
