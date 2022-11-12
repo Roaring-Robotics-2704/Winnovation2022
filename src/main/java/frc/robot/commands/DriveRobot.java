@@ -22,6 +22,7 @@ public class DriveRobot extends CommandBase {
   public void initialize() {
     danceTime.reset();
     danceTime.start();
+    SmartDashboard.setDefaultBoolean("Enable Dance Mode", true);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,15 +40,14 @@ public class DriveRobot extends CommandBase {
     double timerRemainder = Math.IEEEremainder(timerValue,1);
     SmartDashboard.putNumber("timerRemainder",timerRemainder);
 
-    double danceSpeed = 0.5;
-    if(joystickTotal<0.05){
+    if(joystickTotal<0.05&&RobotContainer.danceChooser.getSelected()){//if joysticks not used and not disabled in smartDashboard
       if(timerRemainder<0){ //every half a second, switch modes
-        joystickLeft = danceSpeed;
-        joystickRight = -danceSpeed;
+        joystickLeft = Constants.danceSpeed;
+        joystickRight = -Constants.danceSpeed;
       }
       else{
-        joystickLeft = -danceSpeed;
-        joystickRight = danceSpeed;
+        joystickLeft = -Constants.danceSpeed;
+        joystickRight = Constants.danceSpeed;
       }
     }
     SmartDashboard.putNumber("joystickLeft", joystickLeft);

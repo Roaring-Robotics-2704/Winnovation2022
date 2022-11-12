@@ -6,6 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Brush;
 
@@ -33,6 +35,9 @@ public class RobotContainer {
   public static XboxController xbox  = new XboxController(Constants.c_joystick);
   //getPOV can be used to find the ange value of the d-Pad on the xbox controller
 
+  public static SendableChooser<Boolean> danceChooser = new SendableChooser<>();
+
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
@@ -40,6 +45,10 @@ public class RobotContainer {
     //Is nessary, might have been the reason for the error "DifferntialDrive...Output not updated often enough"
     m_Drivetrain.setDefaultCommand(m_DriveRobot);
     m_Brush.setDefaultCommand(m_BrushCommand);
+
+    danceChooser.setDefaultOption("Dance Mode Enabled", true);
+    danceChooser.addOption("Dance Mode Disabled", false);
+    SmartDashboard.putData("Dance Mode", danceChooser);
   }
 
   /**
