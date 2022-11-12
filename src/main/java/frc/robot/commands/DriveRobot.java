@@ -39,7 +39,7 @@ public class DriveRobot extends CommandBase {
     double timerRemainder = Math.IEEEremainder(timerValue,1);
     SmartDashboard.putNumber("timerRemainder",timerRemainder);
 
-    double danceSpeed = 0.25;
+    double danceSpeed = 0.5;
     if(joystickTotal<0.05){
       if(timerRemainder<0){ //every half a second, switch modes
         joystickLeft = danceSpeed;
