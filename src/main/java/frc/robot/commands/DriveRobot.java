@@ -3,12 +3,13 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 
+import frc.robot.Constants;
+import frc.robot.RobotContainer;
 
 public class DriveRobot extends CommandBase {
   /** Creates a new DriveRobot. */
@@ -30,6 +31,7 @@ public class DriveRobot extends CommandBase {
     double joystickLeft = RobotContainer.xbox.getRawAxis(1);
     double joystickRight = RobotContainer.xbox.getRawAxis(5);
 
+    //For Dance Mode
     double joystickTotal = Math.abs(joystickLeft)+Math.abs(joystickRight);
     SmartDashboard.putNumber("joystickTotal",joystickTotal);
 
@@ -53,6 +55,7 @@ public class DriveRobot extends CommandBase {
     SmartDashboard.putNumber("joystickLeft", joystickLeft);
     SmartDashboard.putNumber("joystickRight", joystickRight);
 
+    //For Tank Drive
     RobotContainer.m_Drivetrain.tankDrive(joystickLeft, joystickRight);
 
   }

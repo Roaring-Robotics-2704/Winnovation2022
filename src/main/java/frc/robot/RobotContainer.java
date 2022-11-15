@@ -6,11 +6,13 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
+
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Brush;
 
 import frc.robot.commands.DriveRobot;
-import frc.robot.commands.BrushCommand;
+import frc.robot.commands.Intake;
+import frc.robot.commands.Outtake;
 
 
 /**
@@ -27,19 +29,22 @@ public class RobotContainer {
 
   //Commands
   public static DriveRobot m_DriveRobot = new DriveRobot();
-  public static BrushCommand m_BrushCommand = new BrushCommand();
+  public static Intake m_Intake = new Intake();
+  public static Outtake m_Outake = new Outtake();
 
   //OI
   public static XboxController xbox  = new XboxController(Constants.c_joystick);
-  //getPOV can be used to find the ange value of the d-Pad on the xbox controller
+
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    //Is nessary, might have been the reason for the error "DifferntialDrive...Output not updated often enough"
+
+    //Are nessary, if don't have m_Drivetrain.setDefaultCommand(m_DriveRobot); will give error DifferntialDrive...Output not updated often enough"
     m_Drivetrain.setDefaultCommand(m_DriveRobot);
-    m_Brush.setDefaultCommand(m_BrushCommand);
+    m_Brush.setDefaultCommand(m_Intake);
+    m_Brush.setDefaultCommand(m_Outake);
   }
 
   /**
@@ -48,7 +53,11 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
-  private void configureButtonBindings() {}
+  private void configureButtonBindings() {
+    //is where you put stuff like buttonName.whenPressed(new Comman());
+
+
+  }
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
