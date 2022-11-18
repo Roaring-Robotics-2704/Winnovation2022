@@ -30,4 +30,6 @@ public final class Constants {
     public static double c_constantIntakeSpeed = 0.5;
 
     public static int c_stopBrushMotor = 4;
+    public static int c_runBrush = 1;
+
 }

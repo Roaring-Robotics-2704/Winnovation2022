@@ -3,51 +3,26 @@
 // the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands;
-import frc.robot.Constants;
-import frc.robot.RobotContainer;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import frc.robot.RobotContainer;
 
-
-import edu.wpi.first.math.filter.Debouncer;
-
-
-
-
-public class BrushCommand extends CommandBase {
-
-  
-
-  /** Creates a new Input. */
-  public BrushCommand() {
+public class StopBrush extends CommandBase {
+  /** Creates a new StopBrush. */
+  public StopBrush() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_Brush);
-    
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-
-    // currently works as a press-and-hold Y button to stop the brush motor, will fix to be a toggle later
-
-   //press and hold version of the code - this works if needed
-   /*if (RobotContainer.xbox.getRawButton(Constants.c_stopBrushMotor)) {
-        RobotContainer.m_Brush.setspeed(0);
-    }*/
-   
-    RobotContainer.m_Brush.spinbrush();
-
-    
-
-    }
-  
+    RobotContainer.m_Brush.stopbrush();
+  }
 
   // Called once the command ends or is interrupted.
   @Override
