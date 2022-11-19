@@ -12,7 +12,7 @@ import frc.robot.subsystems.Brush;
 
 import frc.robot.commands.DriveRobot;
 import frc.robot.commands.BrushCommand;
-import frc.robot.commands.StopBrush;
+
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -33,14 +33,12 @@ public class RobotContainer {
   //Commands
   public static DriveRobot m_DriveRobot = new DriveRobot();
   public static BrushCommand m_BrushCommand = new BrushCommand();
-  public static StopBrush m_StopBrush = new StopBrush();
 
   //OI
   public static XboxController xbox  = new XboxController(Constants.c_joystick);
   //getPOV can be used to find the ange value of the d-Pad on the xbox controller
 
-  public static JoystickButton stopBrushButton = new JoystickButton(xbox, Constants.c_stopBrushMotor);
-  public static JoystickButton runBrushButton = new JoystickButton(xbox, Constants.c_runBrush);
+  public static JoystickButton stopBrushButton = new JoystickButton(xbox, Constants.c_rightBumper);
   
   
 
@@ -61,12 +59,12 @@ public class RobotContainer {
    * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
    */
   private void configureButtonBindings() {
-   //stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(m_StopBrush);
-   //runBrushButton.whenPressed(m_BrushCommand);
+
+    // this line makes the thing toggle which is good - will fix the differential speed controller on saturday
 
    stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(new StartEndCommand(m_Brush::spinbrush, m_Brush::stopbrush, m_Brush));
 
-// this works but wrong when you put in new stopbrush() and new brushcommand()
+
 
   }
 
