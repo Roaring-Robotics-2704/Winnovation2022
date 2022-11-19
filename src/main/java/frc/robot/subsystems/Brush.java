@@ -36,24 +36,42 @@ public class Brush extends SubsystemBase {
 
   public void spinbrush() {
 
-    System.out.println("print me");
-    
+    m_brushMotor.set(Constants.c_constantIntakeSpeed);
+
+
+    // DO NOT RUN the following code - it will crash the RoboRio :(
+
+   /* int safety = 0;
+
+    while (true) {
+
     rightTrigger = RobotContainer.xbox.getRawAxis(Constants.RightTrigger);
     leftTrigger = RobotContainer.xbox.getRawAxis(Constants.LeftTrigger);
+
     triggerValue = (rightTrigger + leftTrigger)/2;
+
+    safety++;
 
     if(triggerValue == 0){
       m_brushMotor.set(Constants.c_constantIntakeSpeed);
-      System.out.println("constant 0");
    }
      else if(triggerValue > 0 && triggerValue <= Constants.c_constantIntakeSpeed){
      m_brushMotor.set(Constants.c_constantIntakeSpeed);
-     System.out.println("case 1");
+     
    }
     else{
      m_brushMotor.set(triggerValue);
-     System.out.println("case 2");
    }
+
+   System.out.println(safety);
+
+   if (safety > 5000) {
+
+     break;
+   }
+
+  }*/
+
   }
 
   public void setspeed(double speed) {

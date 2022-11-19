@@ -46,6 +46,8 @@ public class RobotContainer {
 
   
 
+  
+
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
      
@@ -64,8 +66,8 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-   stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(new StartEndCommand(m_Brush::stopbrush, m_Brush::spinbrush, m_Brush));
-
+  stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(new StartEndCommand(() -> m_Brush.stopbrush(), () -> m_Brush.spinbrush(), m_Brush));
+  
    slowOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeSlow())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
    mediumOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeMedium())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
    fastOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeFast())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));

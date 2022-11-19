@@ -30,7 +30,7 @@ public class BrushCommand extends CommandBase {
   @Override
   public void execute() {
    
-    RobotContainer.m_Brush.spinbrush();
+    //RobotContainer.m_Brush.spinbrush(leftTrigger, rightTrigger);
 
 
     }

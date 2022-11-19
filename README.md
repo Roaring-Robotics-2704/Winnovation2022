@@ -7,6 +7,5 @@ todolist:
 
 ## button mapping on driver controller
 - joysticks: driving
-- left/right triggers: adjusting intake speed
 - right bumper: toggle for intake/stop
 - colorful buttons: A -> outtake slowly, B -> outtake medium speed, Y -> outtake fast
