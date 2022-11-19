@@ -18,10 +18,10 @@ public class Brush extends SubsystemBase {
   private WPI_VictorSPX m_brushMotor = new WPI_VictorSPX(Constants.c_brushMotor);
 
   //double rightTrigger = RobotContainer.xbox.getRawAxis(Constants.RightTrigger);
-  double rightTrigger;
-  double leftTrigger;
+  public double rightTrigger;
+  public double leftTrigger;
   //double leftTrigger = RobotContainer.xbox.getRawAxis(Constants.LeftTrigger);
-  double triggerValue = (rightTrigger + leftTrigger)/2;
+  public double triggerValue;
 
 
   // currently works as a press-and-hold Y button to stop the brush motor, will fix to be a toggle later
@@ -35,18 +35,24 @@ public class Brush extends SubsystemBase {
   }
 
   public void spinbrush() {
+
+    System.out.println("print me");
     
     rightTrigger = RobotContainer.xbox.getRawAxis(Constants.RightTrigger);
     leftTrigger = RobotContainer.xbox.getRawAxis(Constants.LeftTrigger);
+    triggerValue = (rightTrigger + leftTrigger)/2;
 
     if(triggerValue == 0){
       m_brushMotor.set(Constants.c_constantIntakeSpeed);
+      System.out.println("constant 0");
    }
      else if(triggerValue > 0 && triggerValue <= Constants.c_constantIntakeSpeed){
      m_brushMotor.set(Constants.c_constantIntakeSpeed);
+     System.out.println("case 1");
    }
     else{
      m_brushMotor.set(triggerValue);
+     System.out.println("case 2");
    }
   }
 
