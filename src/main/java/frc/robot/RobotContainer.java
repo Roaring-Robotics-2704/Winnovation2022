@@ -6,13 +6,14 @@ package frc.robot;
 
 import edu.wpi.first.math.filter.Debouncer.DebounceType;
 import edu.wpi.first.wpilibj.GenericHID;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.Brush;
 
 import frc.robot.commands.DriveRobot;
 import frc.robot.commands.BrushCommand;
-
+import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.StartEndCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 
@@ -39,7 +40,10 @@ public class RobotContainer {
   //getPOV can be used to find the ange value of the d-Pad on the xbox controller
 
   public static JoystickButton stopBrushButton = new JoystickButton(xbox, Constants.c_rightBumper);
-  
+  public static JoystickButton slowOuttakeButton = new JoystickButton(xbox, Constants.c_buttonA);
+  public static JoystickButton mediumOuttakeButton = new JoystickButton(xbox, Constants.c_buttonB);
+  public static JoystickButton fastOuttakeButton = new JoystickButton(xbox, Constants.c_buttonY);
+
   
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
@@ -60,10 +64,11 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-    // this line makes the thing toggle which is good - will fix the differential speed controller on saturday
+   stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(new StartEndCommand(m_Brush::stopbrush, m_Brush::spinbrush, m_Brush));
 
-   stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(new StartEndCommand(m_Brush::spinbrush, m_Brush::stopbrush, m_Brush));
-
+   slowOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeSlow())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
+   mediumOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeMedium())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
+   fastOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeFast())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
 
 
   }

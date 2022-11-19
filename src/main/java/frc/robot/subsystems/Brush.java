@@ -54,6 +54,21 @@ public class Brush extends SubsystemBase {
     m_brushMotor.set(speed);
   }
 
+  public void outtakeSlow() {
+    m_brushMotor.set(Constants.c_lowOuttakeSpeed);
+  }
+
+  public void outtakeMedium() {
+    m_brushMotor.set(Constants.c_mediumOuttakeSpeed);
+  }
+
+  public void outtakeFast() {
+    m_brushMotor.set(Constants.c_highOuttakeSpeed);
+  }
+
+
+
+
   public void stopbrush() {
     m_brushMotor.set(0);
   }
