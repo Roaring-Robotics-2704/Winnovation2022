@@ -64,6 +64,7 @@ public class RobotContainer {
     danceChooser.setDefaultOption("Dance Mode Enabled", true);
     danceChooser.addOption("Dance Mode Disabled", false);
     SmartDashboard.putData("Dance Mode", danceChooser);
+    SmartDashboard.updateValues();
     //m_Brush.setDefaultCommand(m_BrushCommand);
   }
 
