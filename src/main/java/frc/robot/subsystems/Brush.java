@@ -9,18 +9,93 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
 
+import frc.robot.RobotContainer;
+
 public class Brush extends SubsystemBase {
   /** Creates a new Brush. */
   public Brush() {}
 
   private WPI_VictorSPX m_brushMotor = new WPI_VictorSPX(Constants.c_brushMotor);
 
+  //double rightTrigger = RobotContainer.xbox.getRawAxis(Constants.RightTrigger);
+  public double rightTrigger;
+  public double leftTrigger;
+  //double leftTrigger = RobotContainer.xbox.getRawAxis(Constants.LeftTrigger);
+  public double triggerValue;
+
+
+  // currently works as a press-and-hold Y button to stop the brush motor, will fix to be a toggle later
+
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+   
+   
+  }
+
+  public void spinbrush() {
+
+    m_brushMotor.set(Constants.c_constantIntakeSpeed);
+
+
+    // DO NOT RUN the following code - it will crash the RoboRio :(
+
+   /* int safety = 0;
+
+    while (true) {
+
+    rightTrigger = RobotContainer.xbox.getRawAxis(Constants.RightTrigger);
+    leftTrigger = RobotContainer.xbox.getRawAxis(Constants.LeftTrigger);
+
+    triggerValue = (rightTrigger + leftTrigger)/2;
+
+    safety++;
+
+    if(triggerValue == 0){
+      m_brushMotor.set(Constants.c_constantIntakeSpeed);
+   }
+     else if(triggerValue > 0 && triggerValue <= Constants.c_constantIntakeSpeed){
+     m_brushMotor.set(Constants.c_constantIntakeSpeed);
+     
+   }
+    else{
+     m_brushMotor.set(triggerValue);
+   }
+
+   System.out.println(safety);
+
+   if (safety > 5000) {
+
+     break;
+   }
+
+  }*/
+
   }
 
   public void setspeed(double speed) {
     m_brushMotor.set(speed);
   }
+
+  public void outtakeSlow() {
+    m_brushMotor.set(Constants.c_lowOuttakeSpeed);
+  }
+
+  public void outtakeMedium() {
+    m_brushMotor.set(Constants.c_mediumOuttakeSpeed);
+  }
+
+  public void outtakeFast() {
+    m_brushMotor.set(Constants.c_highOuttakeSpeed);
+  }
+
+
+
+
+  public void stopbrush() {
+    m_brushMotor.set(0);
+  }
+
+
 }

@@ -4,37 +4,25 @@
 
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.RobotContainer;
 
-import edu.wpi.first.wpilibj2.command.CommandBase;
-
-
-public class BrushCommand extends CommandBase {
-
-  
-
-  /** Creates a new Input. */
-  public BrushCommand() {
+public class StopBrush extends CommandBase {
+  /** Creates a new StopBrush. */
+  public StopBrush() {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.m_Brush);
-    
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-    
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-   
-    //RobotContainer.m_Brush.spinbrush(leftTrigger, rightTrigger);
-
-
-    }
-  
+    RobotContainer.m_Brush.stopbrush();
+  }
 
   // Called once the command ends or is interrupted.
   @Override

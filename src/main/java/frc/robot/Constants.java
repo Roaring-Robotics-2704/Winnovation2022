@@ -29,5 +29,18 @@ public final class Constants {
 
     public static int c_brushMotor = 3;
     public static double danceSpeed=0.5;
+    public static double c_constantIntakeSpeed = 0.65;
+
+    public static int c_rightBumper = 6;
+
+
+    public static int c_buttonX = 3;
+    public static int c_buttonY = 4;
+    public static int c_buttonA = 1;
+    public static int c_buttonB = 2;
+    
+    public static double c_lowOuttakeSpeed = -0.3;
+    public static double c_mediumOuttakeSpeed = -0.6;
+    public static double c_highOuttakeSpeed = -1.0;
 }
 //this is a test
