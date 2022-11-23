@@ -39,8 +39,8 @@ public final class Constants {
     public static int c_buttonA = 1;
     public static int c_buttonB = 2;
     
-    public static double c_lowOuttakeSpeed = -0.3;
-    public static double c_mediumOuttakeSpeed = -0.6;
-    public static double c_highOuttakeSpeed = -1.0;
+    public static double c_lowOuttakeSpeed = -0.1;
+    public static double c_mediumOuttakeSpeed = -0.2;
+    public static double c_highOuttakeSpeed = -0.3;
 }
 //this is a test
