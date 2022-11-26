@@ -48,6 +48,9 @@ public class RobotContainer {
   public static JoystickButton mediumOuttakeButton = new JoystickButton(xbox, Constants.c_buttonB);
   public static JoystickButton fastOuttakeButton = new JoystickButton(xbox, Constants.c_buttonY);
 
+  //public static JoystickButton slowOuttakeTrigger = new JoystickButton(xbox, Constants.LeftTrigger);
+  //public static JoystickButton mediumOuttakeTrigger = new JoystickButton(xbox, Constants.RightTrigger);
+
   
 
   
@@ -76,11 +79,17 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
 
-  stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(new StartEndCommand(() -> m_Brush.stopbrush(), () -> m_Brush.spinbrush(), m_Brush));
+   stopBrushButton.debounce(0.1, DebounceType.kBoth).toggleWhenActive(new StartEndCommand(() -> m_Brush.stopbrush(), () -> m_Brush.spinbrush(), m_Brush));
   
    slowOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeSlow())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
    mediumOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeMedium())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
    fastOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeFast())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
+
+   //slowOuttakeTrigger.whenHeld(new InstantCommand(() -> m_Brush.outtakeSlow()));
+   //mediumOuttakeTrigger.whenHeld(new InstantCommand(()-> m_Brush.outtakeMedium()));
+
+
+
 
 
   }

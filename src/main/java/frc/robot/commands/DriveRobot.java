@@ -40,6 +40,19 @@ public class DriveRobot extends CommandBase {
     double timerRemainder = Math.IEEEremainder(timerValue,1);
     SmartDashboard.putNumber("timerRemainder",timerRemainder);
 
+
+    /*if(joystickTotal<0.05 && RobotContainer.xbox.getRawButton(Constants.c_leftBumper)) {
+      if(timerRemainder<0){ //every half a second, switch modes
+        joystickLeft = Constants.danceSpeed;
+        joystickRight = -Constants.danceSpeed;
+      }
+      else{
+        joystickLeft = -Constants.danceSpeed;
+        joystickRight = Constants.danceSpeed;
+      }
+
+    }*/
+
     if(joystickTotal<0.05&&RobotContainer.danceChooser.getSelected()){//if joysticks not used and not disabled in smartDashboard
       if(timerRemainder<0){ //every half a second, switch modes
         joystickLeft = Constants.danceSpeed;

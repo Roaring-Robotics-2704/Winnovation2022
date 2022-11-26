@@ -33,6 +33,8 @@ public final class Constants {
 
     public static int c_rightBumper = 6;
 
+    public static int c_leftBumper = 5;
+
 
     public static int c_buttonX = 3;
     public static int c_buttonY = 4;
