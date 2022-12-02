@@ -85,6 +85,8 @@ public class RobotContainer {
    mediumOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeMedium())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
    fastOuttakeButton.whenHeld(new InstantCommand(() -> m_Brush.outtakeFast())).whenReleased(new InstantCommand(() -> m_Brush.spinbrush()));
 
+
+    // these two swap the outtake controls to the triggers if need be
    //slowOuttakeTrigger.whenHeld(new InstantCommand(() -> m_Brush.outtakeSlow()));
    //mediumOuttakeTrigger.whenHeld(new InstantCommand(()-> m_Brush.outtakeMedium()));
 

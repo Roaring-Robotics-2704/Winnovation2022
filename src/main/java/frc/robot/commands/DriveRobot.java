@@ -40,6 +40,7 @@ public class DriveRobot extends CommandBase {
     double timerRemainder = Math.IEEEremainder(timerValue,1);
     SmartDashboard.putNumber("timerRemainder",timerRemainder);
 
+    //this whole thing is the dance mode setup but with the left bumper instead of SmartDashboard, here as a contingency plan
 
     /*if(joystickTotal<0.05 && RobotContainer.xbox.getRawButton(Constants.c_leftBumper)) {
       if(timerRemainder<0){ //every half a second, switch modes
